@@ -1,0 +1,46 @@
+<div ng-include="'static/pages/headers/otherPagesHeader.html'"></div>
+<div class="contact w3agile">
+    <div class="container">     
+        <div class="contact-main w3l-co">
+            <div class="col-md-10 contact-right w3agile-co form-group">
+                <div class="contact-top">
+                    <h3>Create Post</h3>
+                    <p>Post Yourself</p>
+                </div>
+                <form name="postForm">
+                    <input type="text" class="shart form-control" name="title" placeholder="Title" ng-model="pCtrl.post.title" required>
+                    <div class="has-error" ng-show="postForm.pCtrl.post.title.$dirty">
+                        <span ng-show="postForm.pCtrl.post.title.$error.required">This is a required field</span>
+                    </div>
+                    <br><br>
+                    <input type="text" class="shart form-control" name="category" placeholder="Category" ng-model="pCtrl.post.category" required>
+                    <div class="has-error" ng-show="postForm.pCtrl.post.category.$dirty">
+                        <span ng-show="postForm.pCtrl.post.category.$error.required">This is a required field</span>
+                    </div>
+				<br><br>
+                    <!-- <textarea name="body" placeholder="Post Body" ng-model="pCtrl.post.fullText" class="form-control"></textarea> -->
+                    <textarea name="fullText" class="content-box" style="height: 400px;"
+					        ng-model="pCtrl.post.fullText"
+					        markdown-editor="{'iconlibrary': 'fa', addExtraButtons: true, resize: 'vertical'}"
+					        on-fullscreen="onFullScreenCallback()"
+					        on-fullscreen-exit="onFullScreenExitCallback()"
+					        placeholder="Please Enter minimum 250 characters"					       
+					        rows="10" ng-minlength="251" required>
+					</textarea>			
+					<span ng-show="!postForm.fullText.$valid"">Please Enter minimum 250 characters</span>
+                    <div marked="editor1" class="markdown" style="padding: 20px"></div>
+                  <!-- <button type="submit" ng-disabled="postForm.$invalid" class="btn btn-success" ng-click="submitPost()" >Post</button> -->
+                  <div class="row">
+                      <div class="form-actions floatRight">
+                          <button type="submit" class="btn btn-success btn-sm" ng-disabled="postForm.$invalid" ng-click="submitPost()">Create</button>
+                          <button type="button" class="btn btn-danger btn-sm" ng-click="resetForm()">Cancel</button>
+                      </div>
+                  </div>
+                </form>
+          </div>
+        <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--contact end here-->
+
